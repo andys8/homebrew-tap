@@ -7,7 +7,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Tap this repository
+        run: brew tap andys8/tap ${{ github.workspace }}
       - name: Install formula
-        run: brew install --formula Formula/git-brunch.rb
+        run: brew install andys8/tap/git-brunch
       - name: Test formula
-        run: brew test --formula Formula/git-brunch.rb
+        run: brew test andys8/tap/git-brunch
+      - name: Print version
+        run: git-brunch --version
